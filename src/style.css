@@ -9,7 +9,7 @@
   --darkslate-700: #111111;
   --darkslate-800: #0e0e0e;
   --darkslate-900: #0b0b0b;
-
+/* Original Red Theme
   --primary-100: #f9cdd3;
   --primary-200: #f3a3aa;
   --primary-300: #ec7981;
@@ -19,6 +19,16 @@
   --primary-700: #b82534;
   --primary-800: #a01b2b;
   --primary-900: #891321;
+*/
+  --primary-100: #fff9c4;
+  --primary-200: #fff59d;
+  --primary-300: #fff176;
+  --primary-400: #ffee58;
+  --primary-500: #ffeb3b;
+  --primary-600: #fdd835;
+  --primary-700: #fbc02d;
+  --primary-800: #f9a825;
+  --primary-900: #f57f17;
 
   --font-cabinet-grotesk: "CabinetGrotesk", "Cabinet Grotesk", sans-serif;
   --font-satoshi: "Satoshi", sans-serif;
