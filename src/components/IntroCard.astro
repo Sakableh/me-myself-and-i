@@ -17,8 +17,31 @@ import MemojiAvatarYellow from "../assets/me-yellow.webp";
   <div class="flex w-full h-full">
     <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
       <div class="flex flex-col h-full">
-        <h6 class="text-sm font-light m-0 text-darkslate-300">welcome</h6>
+      <h6 class="text-sm font-light m-0 text-darkslate-300">mmni.dev</h6>
 
+      <p class="sr-only">
+        {SITE.author.fullName} is an engineer, technical data analyst, and homelab
+        tinkerer based in Brunei. He documents the systems he builds, from UniFi
+        networking and Proxmox services to AI automation, ESP32 projects, dashboards,
+        and self-hosted tools, with a practical and traceable engineering mindset.
+        </p>
+
+        <p aria-hidden="true" class="m-0 font-light text-md">
+          <span>
+            <b class="font-bold">{SITE.author.fullName}</b><br />
+            Engineer, technical data analyst, and homelab tinkerer based in Brunei.
+          </span>
+          <br />
+          <span class="block mt-2">
+            I document the systems I build, from networking and Proxmox services
+            to AI automation, ESP32 projects, and self-hosted tools, with
+            the same mindset I bring to engineering workflows: practical, traceable,
+            and built to improve over time.
+          </span>
+        </p>
+
+        <!--
+        <h6 class="text-sm font-light m-0 text-darkslate-300">welcome</h6>
         <p class="sr-only">
           Hi, I'm {SITE.author.fullName}, a software developer with strong focus on
           the user experience, animations, micro interactions and SEO. Feel
@@ -37,6 +60,7 @@ import MemojiAvatarYellow from "../assets/me-yellow.webp";
             to collaborate, or just want to say hello.
           </span>
         </p>
+-->
       </div>
       <div class="flex flex-col lg:flex-row gap-2 lg:gap-4">
         <div class="flex gap-2 lg:gap-4">
@@ -77,6 +101,7 @@ import MemojiAvatarYellow from "../assets/me-yellow.webp";
             </Button>
           </Tooltip>
         </div>
+<!--
         <Button
           aria-label="book a call"
           data-cal-link={SITE.cal.username}
@@ -87,6 +112,7 @@ import MemojiAvatarYellow from "../assets/me-yellow.webp";
             class="font-bold whitespace-nowrap">Book a call</span
           >
         </Button>
+-->
       </div>
     </div>
     <Image
