@@ -7,12 +7,13 @@ import ThemeChangeCard from "../components/ThemeChangeCard.astro";
 import TimeZone from "../components/TimeZoneCard.astro";
 import AboutMe from "../components/AboutMe.astro";
 import Now from "../components/Now.astro";
-import MyStack from "../components/MyStack.astro";
+import Globe from "../components/Globe";
+import DesignWorksCard from "../components/DesignWorksCard.astro";
 import { SITE } from "../site-config";
 ---
 
 <script>
-  import { stagger, animate } from "motion";
+  import { stagger, animate, type AnimationSequence } from "motion";
   import { loaderAnimation } from "../lib/constants";
   const cards = document.querySelectorAll(".card");
 
@@ -29,60 +30,65 @@ import { SITE } from "../site-config";
     ],
   ];
 
-  animate(sequence);
+  animate(sequence as AnimationSequence);
 </script>
 
 <Layout
-  description={`${SITE.author.fullName} documents a Brunei homelab: UniFi networking, Proxmox, self-hosted services, media, DNS, and infrastructure notes.`}
+  description={`I'm a developer based in ${SITE.location.countryName}, passionate about user experience and specializing in engaging animations and micro-interactions. My primary tools of choice include: JavaScript, React, Solid.js, Astro, Svelte, and Node.js.`}
   title={`${SITE.author.fullName} - ${SITE.author.jobTitle}`}
 >
   <main
-    class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-visible relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:min-h-screen lg:auto-rows-[minmax(120px,auto)] lg:grid-cols-4 lg:gap-4"
+    class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
   >
     <IntroCard />
     <AboutMe />
     <ContactsCard />
     <TimeZone />
-    <MyStack />
+    <DesignWorksCard />
     <Now />
     <Card
+      href="playground"
       colSpan="md:col-span-1"
-      rowSpan="md:row-span-2"
-      title="Network"
-    >
-      <p class="mt-3 text-sm font-light text-neutral-200">
-        UniFi gateway, PoE switching, WiFi 7 access points, VLANs, camera
-        isolation, and DNS filtering.
-      </p>
-    </Card>
+      rowSpan="md:row-span-1"
+      title="Playground"
+    />
     <Card
+      href="/guestbook"
       colSpan="md:col-span-1"
-      rowSpan="md:row-span-2"
-      title="Self-hosted"
-    >
-      <p class="mt-3 text-sm font-light text-neutral-200">
-        Proxmox, LXC, Docker, Plex, reverse proxy, and fixes worth remembering.
-      </p>
-    </Card>
+      rowSpan="md:row-span-1"
+      title="Guestbook"
+    />
     <Card
       href="/blog"
-      colSpan="md:col-span-2"
-      rowSpan="md:row-span-2"
-      title="Homelab Journal"
+      colSpan="md:col-span-1"
+      rowSpan="md:row-span-1"
+      title="Blog"
+    />
+    <Card
+      colorText="text-neutral-900"
+      colSpan="md:col-span-1"
+      href="travel"
+      rowSpan="md:row-span-1"
+      title="Countries I visited"
     >
-      <p class="mt-3 text-sm font-light text-neutral-200">
-        Build logs, setup notes, cost breakdowns, and future-me documentation.
-      </p>
+      <div class="h-full w-full absolute inset-0 -z-10">
+        <div class="hidden md:block h-full w-full">
+          <Globe client:media="(min-width: 768px)" />
+        </div>
+        <div class="block md:hidden h-full w-full">
+          <Globe client:media="(max-width: 768px)" isStatic={true} />
+        </div>
+      </div>
     </Card>
     <ThemeChangeCard />
 
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
       <p class="text-xs">
-        © 2026 Ervin Chung · Built with <a
+        © 2025 · Crafted with ♥️ using <a
           class="text-red-500"
           href="https://astro.build/"
           target="_blank">Astro</a
-        > on Cloudflare Pages.
+        > by Me.
       </p>
     </Card>
   </main>
