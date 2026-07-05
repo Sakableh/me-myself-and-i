@@ -1,0 +1,50 @@
+---
+import Card from "./Card/index.astro";
+import Button from "./Button.astro";
+import { LINKS } from "../lib/constants";
+import { Icon } from "astro-icon/components";
+import { SITE } from "../site-config";
+---
+
+<Card colSpan="md:col-span-3" rowSpan="md:row-span-4">
+  <div class="flex w-full h-full">
+    <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
+      <div class="flex flex-col h-full">
+        <h6 class="text-sm font-light m-0 text-darkslate-300">welcome</h6>
+
+        <p class="sr-only">
+          Hi, I'm {SITE.author.fullName}, a homelab enthusiast and systems
+          tinkerer from {SITE.location.countryName}. I write about my network
+          setup, self-hosting experiments, and infrastructure projects.
+        </p>
+        <p aria-hidden="true" class="m-0 font-light text-md">
+          <span>
+            Hi, I'm <b class="font-bold">{SITE.author.fullName}</b>, a homelab
+            enthusiast and systems tinkerer.
+          </span>
+          <br />
+          <span class="block mt-2">
+            I write about my home network, Proxmox, UniFi, self-hosting, and
+            infrastructure experiments.
+          </span>
+        </p>
+      </div>
+      <div class="flex flex-col lg:flex-row gap-2 lg:gap-4">
+        <div class="flex gap-2 lg:gap-4">
+          <a href={LINKS.github} aria-label="github profile" target="_blank">
+            <Button aria-label="github profile">
+              <Icon name="ri:github-fill" />
+              <span class="sr-only">GitHub Profile</span>
+            </Button>
+          </a>
+          <a href={`mailto:${LINKS.email}`} aria-label="email">
+            <Button aria-label="email">
+              <Icon name="ri:mail-line" />
+              <span class="sr-only">Email</span>
+            </Button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Card>
