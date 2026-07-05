@@ -1,3 +1,4 @@
+<!--
 ---
 import Card from "./Card/index.astro";
 import Pulse from "./Pulse.astro";
@@ -15,5 +16,20 @@ import Pulse from "./Pulse.astro";
     </div>
     <Pulse />
   </div>
-  <p class="text-xs">Currently working fulltime</p>
+  <p class="text-xs">Building a homelab · Learning infrastructure · Writing about it</p>
+</Card>
+-->
+---
+import Card from "./Card/index.astro";
+import Pulse from "./Pulse.astro";
+---
+
+<Card colSpan="md:col-span-1" rowSpan="md:row-span-1" padding="pt-1.7 pb-3 px-3">
+  <div class="flex justify-between w-full items-start mb-1">
+    <h2 class="text-white text-sm font-bold">Now</h2>
+    <Pulse />
+  </div>
+  <p class="text-[11px] leading-relaxed mt-0.5">
+    Building a homelab · Learning infrastructure · Writing about it
+  </p>
 </Card>
