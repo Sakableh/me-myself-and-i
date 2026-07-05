@@ -1,5 +1,6 @@
 ---
 import "../style.css";
+import { LINKS } from "../lib/constants";
 import { SITE } from "../site-config";
 
 interface Props {
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const { title, description, page, pubDate } = Astro.props;
-const image = `${Astro.url.origin}/og-image.svg`;
+const image = `${Astro.url.origin}/og-image.png`;
 
 const schema =
   page !== "blog"
@@ -20,19 +21,10 @@ const schema =
         "@type": "Person",
         name: SITE.author.fullName,
         url: Astro.url.origin,
-        sameAs: [SITE.links.github],
-        image,
+        sameAs: [LINKS.linkedin, LINKS.github],
+        image: `${Astro.url.origin}/og-image.png`,
         jobTitle: SITE.author.jobTitle,
-        knowsAbout: [
-          "Homelab",
-          "Proxmox",
-          "UniFi",
-          "Docker",
-          "Plex",
-          "DNS filtering",
-          "Cloudflare Pages",
-          "Self-hosting",
-        ],
+        knowsAbout: ["JavaScript", "React", "Astro", "Solid.js", "Svelte", "Node.js", "User Experience", "Web Development"],
         worksFor: {
           "@type": "Organization",
           name: "Self-Employed",
@@ -56,19 +48,19 @@ const schema =
         },
         headline: title || title,
         description: description || title,
-        image,
+        image: `${Astro.url.origin}/og-image.png`, //TODO: dynamic
         author: {
           "@type": "Person",
           name: SITE.author.shortName,
           url: Astro.url.origin,
-          sameAs: [SITE.links.github],
+          sameAs: [LINKS.linkedin, LINKS.github],
         },
         publisher: {
           "@type": "Organization",
           name: SITE.author.shortName,
           logo: {
             "@type": "ImageObject",
-            url: image,
+            url: `${Astro.url.origin}/og-image.png`,
           },
         },
         datePublished: pubDate || new Date().toISOString(),
@@ -79,14 +71,13 @@ const schema =
 <!doctype html>
 <html
   lang="en"
-  data-site-theme="astro-bento"
   data-cal-namespace={SITE.cal.durationNamespace}
   data-cal-origin={SITE.cal.origin}
 >
   <head>
     <meta charset="UTF-8" />
     <meta content="width=device-width" name="viewport" />
-    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
     <meta content={Astro.generator} name="generator" />
     <title>{title}</title>
     <meta content={description} name="description" />
@@ -95,7 +86,7 @@ const schema =
     <meta name="author" content={SITE.author.fullName} />
     <meta
       name="keywords"
-      content={`homelab, Proxmox, UniFi, self-hosting, Plex, Docker, LXC, Cloudflare Pages, DNS filtering, ${SITE.location.countryName}`}
+      content={`full stack developer, web developer, React, Astro, Solid.js, Svelte, freelance developer, ${SITE.location.countryName}, UX, animations, micro-interactions`}
     />
     <meta content="website" property="og:type" />
     <meta content={title} property="og:title" />
@@ -108,7 +99,7 @@ const schema =
       property="og:image"
     />
     <meta property="og:image:alt" content={description} />
-    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:type" content="image/png" />
     <meta content="summary_large_image" name="twitter:card" />
     <meta content={title} name="twitter:title" />
     <meta content={description} name="twitter:description" />
@@ -126,6 +117,69 @@ const schema =
       set:html={JSON.stringify(schema)}
       type="application/ld+json"
     />
+    <script
+      defer
+      is:inline
+      src="https://cloud.umami.is/script.js"
+      data-website-id={import.meta.env.UMAMI_WEBSITE_ID}></script>
+    <script
+      src="https://analytics.ahrefs.com/analytics.js"
+      data-key={import.meta.env.AHREFS_ANALYTICS_KEY}
+      async></script>
+
+    <!-- Cal element-click embed code begins -->
+    <script is:inline type="text/javascript">
+      (function (C, A, L) {
+        let p = function (a, ar) {
+          a.q.push(ar);
+        };
+        let d = C.document;
+        C.Cal =
+          C.Cal ||
+          function () {
+            let cal = C.Cal;
+            let ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement("script")).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () {
+                p(api, arguments);
+              };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === "string") {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ["initNamespace", namespace]);
+              } else p(cal, ar);
+              return;
+            }
+            p(cal, ar);
+          };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+      const calNamespace =
+        document.documentElement.dataset.calNamespace || "15min";
+      const calOrigin =
+        document.documentElement.dataset.calOrigin || "https://cal.com";
+
+      Cal("init", calNamespace, { origin: calOrigin });
+
+      // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
+      // `data-cal-link="ladvace/15min"`
+      // data-cal-namespace="15min"
+      // `data-cal-config='{"layout":"month_view"}'`
+
+      Cal.ns[calNamespace]("ui", {
+        styles: { branding: { brandColor: "#000000" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    </script>
+    <!-- Cal element-click embed code ends -->
   </head>
   <body class="bg-darkslate-700 flex flex-col justify-center items-center">
     <slot name="loader" />

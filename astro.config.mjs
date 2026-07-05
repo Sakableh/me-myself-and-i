@@ -3,14 +3,20 @@ import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 import UnoCSS from "@unocss/astro";
 import icon from "astro-icon";
+
 import solidJs from "@astrojs/solid-js";
 import { remarkReadingTime } from "./src/lib/remark-reading-time.mjs";
 
-const site = "https://mmni.dev";
+import svelte from "@astrojs/svelte";
+
+
+const envSiteUrl = process.env.SITE_URL ?? "https://gianmarcocavallo.com/";
+const site = envSiteUrl.endsWith("/") ? envSiteUrl : `${envSiteUrl}/`;
+const siteNoTrailingSlash = site.endsWith("/") ? site.slice(0, -1) : site;
 
 // https://astro.build/config
 export default defineConfig({
-  fonts: [
+    fonts: [
     {
       provider: fontProviders.local(),
       name: "CabinetGrotesk",
@@ -50,17 +56,16 @@ export default defineConfig({
     sitemap(),
     robotsTxt({
       sitemap: [
-        `${site}/sitemap-index.xml`,
-        `${site}/sitemap-0.xml`,
+        `${siteNoTrailingSlash}/sitemap-index.xml`,
+        `${siteNoTrailingSlash}/sitemap-0.xml`,
       ],
     }),
     solidJs(),
     UnoCSS({ injectReset: true }),
     icon(),
-  ],
+    svelte(),  ],
   markdown: {
     remarkPlugins: [remarkReadingTime],
-    rehypePlugins: [],
   },
   image: {
     service: { entrypoint: "astro/assets/services/noop" },
