@@ -7,7 +7,7 @@ export const SITE = {
     lastName: "Chung",
     fullName: "Ervin Chung",
     shortName: "Ervin",
-    jobTitle: "Homelab Enthusiast & Systems Tinkerer",
+    jobTitle: "Homelab Operator & Systems Tinkerer",
     twitterHandle: "",
   },
   location: {

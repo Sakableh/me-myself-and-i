@@ -33,11 +33,11 @@ import { SITE } from "../site-config";
 </script>
 
 <Layout
-  description={`${SITE.author.fullName} — homelab journal documenting network setups, self-hosting experiments, and infrastructure tinkering from ${SITE.location.countryName}.`}
+  description={`${SITE.author.fullName} documents a Brunei homelab: UniFi networking, Proxmox, self-hosted services, media, DNS, and infrastructure notes.`}
   title={`${SITE.author.fullName} - ${SITE.author.jobTitle}`}
 >
   <main
-    class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
+    class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-visible relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:min-h-screen lg:auto-rows-[minmax(120px,auto)] lg:grid-cols-4 lg:gap-4"
   >
     <IntroCard />
     <AboutMe />
@@ -46,16 +46,39 @@ import { SITE } from "../site-config";
     <MyStack />
     <Now />
     <Card
+      colSpan="md:col-span-1"
+      rowSpan="md:row-span-2"
+      title="Network"
+    >
+      <p class="mt-3 text-sm font-light text-neutral-200">
+        UniFi gateway, PoE switching, WiFi 7 access points, VLANs, camera
+        isolation, and DNS filtering.
+      </p>
+    </Card>
+    <Card
+      colSpan="md:col-span-1"
+      rowSpan="md:row-span-2"
+      title="Self-hosted"
+    >
+      <p class="mt-3 text-sm font-light text-neutral-200">
+        Proxmox, LXC, Docker, Plex, reverse proxy, and fixes worth remembering.
+      </p>
+    </Card>
+    <Card
       href="/blog"
       colSpan="md:col-span-2"
       rowSpan="md:row-span-2"
-      title="Blog"
-    />
+      title="Homelab Journal"
+    >
+      <p class="mt-3 text-sm font-light text-neutral-200">
+        Build logs, setup notes, cost breakdowns, and future-me documentation.
+      </p>
+    </Card>
     <ThemeChangeCard />
 
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
       <p class="text-xs">
-        © 2026 · Built with <a
+        © 2026 Ervin Chung · Built with <a
           class="text-red-500"
           href="https://astro.build/"
           target="_blank">Astro</a

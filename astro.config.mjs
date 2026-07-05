@@ -4,7 +4,6 @@ import robotsTxt from "astro-robots-txt";
 import UnoCSS from "@unocss/astro";
 import icon from "astro-icon";
 import solidJs from "@astrojs/solid-js";
-import svelte from "@astrojs/svelte";
 import { remarkReadingTime } from "./src/lib/remark-reading-time.mjs";
 
 const site = "https://mmni.dev";
@@ -58,7 +57,6 @@ export default defineConfig({
     solidJs(),
     UnoCSS({ injectReset: true }),
     icon(),
-    svelte(),
   ],
   markdown: {
     remarkPlugins: [remarkReadingTime],

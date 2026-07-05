@@ -3,7 +3,7 @@ import Card from "./Card/index.astro";
 import { SITE } from "../site-config";
 ---
 
-<Card colSpan="md:col-span-1" rowSpan="md:row-span-6" title="About me">
+<Card colSpan="md:col-span-1" rowSpan="md:row-span-6" title="About the lab">
   <div class="flex flex-col gap-2">
     <p class="sr-only">
       Hi, I'm {SITE.author.firstName}, a homelab enthusiast from {SITE.location.countryName}.
@@ -15,7 +15,7 @@ import { SITE } from "../site-config";
         Hi, I'm {SITE.author.firstName}, a homelab enthusiast from {SITE.location.countryName}.
       </p>
       <br />
-      My lab runs on:
+      Core systems:
       <ul class="list-disc list-inside">
         <li>Proxmox VE</li>
         <li>UniFi Networking</li>
@@ -26,8 +26,8 @@ import { SITE } from "../site-config";
       </ul>
     </div>
     <p class="text-sm font-light">
-      I document my setups, costs, and lessons learned so future me (and maybe
-      you) don't have to figure it out twice.
+      This site is a working notebook: setup references, network decisions,
+      hardware costs, and fixes I want searchable later.
     </p>
   </div>
 </Card>

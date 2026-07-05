@@ -8,26 +8,37 @@ import { SITE } from "../site-config";
 
 <Card colSpan="md:col-span-3" rowSpan="md:row-span-4">
   <div class="flex w-full h-full">
-    <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
+    <div class="flex flex-col justify-between gap-6">
       <div class="flex flex-col h-full">
-        <h6 class="text-sm font-light m-0 text-darkslate-300">welcome</h6>
+        <h6 class="text-sm font-light m-0 text-darkslate-300">mmni.dev</h6>
 
         <p class="sr-only">
           Hi, I'm {SITE.author.fullName}, a homelab enthusiast and systems
           tinkerer from {SITE.location.countryName}. I write about my network
           setup, self-hosting experiments, and infrastructure projects.
         </p>
-        <p aria-hidden="true" class="m-0 font-light text-md">
+        <h1 class="m-0 mt-3 text-4xl font-black leading-tight md:text-5xl">
+          Homelab notes from Brunei.
+        </h1>
+        <p aria-hidden="true" class="m-0 mt-4 max-w-3xl font-light text-md text-neutral-200">
           <span>
-            Hi, I'm <b class="font-bold">{SITE.author.fullName}</b>, a homelab
-            enthusiast and systems tinkerer.
+            I'm <b class="font-bold">{SITE.author.fullName}</b>. I document
+            the machines, networks, services, costs, and small fixes that keep
+            my home infrastructure useful.
           </span>
           <br />
           <span class="block mt-2">
-            I write about my home network, Proxmox, UniFi, self-hosting, and
-            infrastructure experiments.
+            Current focus: UniFi networking, Proxmox, Plex, DNS filtering,
+            reverse proxying, and self-hosted services.
           </span>
         </p>
+        <div class="mt-5 flex flex-wrap gap-2 text-xs text-neutral-300">
+          <span class="rounded border border-darkslate-300 px-2 py-1">UniFi</span>
+          <span class="rounded border border-darkslate-300 px-2 py-1">Proxmox</span>
+          <span class="rounded border border-darkslate-300 px-2 py-1">Docker</span>
+          <span class="rounded border border-darkslate-300 px-2 py-1">Plex</span>
+          <span class="rounded border border-darkslate-300 px-2 py-1">Cloudflare</span>
+        </div>
       </div>
       <div class="flex flex-col lg:flex-row gap-2 lg:gap-4">
         <div class="flex gap-2 lg:gap-4">
@@ -41,6 +52,12 @@ import { SITE } from "../site-config";
             <Button aria-label="email">
               <Icon name="ri:mail-line" />
               <span class="sr-only">Email</span>
+            </Button>
+          </a>
+          <a href="/blog" aria-label="homelab journal">
+            <Button aria-label="homelab journal">
+              <Icon name="ri:article-line" />
+              <span class="sr-only">Homelab Journal</span>
             </Button>
           </a>
         </div>
