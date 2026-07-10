@@ -1,0 +1,25 @@
+---
+// Blog layout with sidebar — used by /blog/* routes
+import BasicLayout from "./BasicLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  currentPage?: string;
+}
+
+const { title, description, currentPage } = Astro.props;
+---
+
+<BasicLayout description={description} title={title} page="blog">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <Sidebar currentPage={currentPage} />
+
+    <!-- Main content area — offset by sidebar width -->
+    <main class="ml-64 flex-1 p-8 min-h-screen">
+      <slot />
+    </main>
+  </div>
+</BasicLayout>

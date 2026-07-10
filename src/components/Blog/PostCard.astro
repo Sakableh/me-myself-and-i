@@ -1,0 +1,60 @@
+---
+import { formatDate } from "../../lib/helpers";
+
+interface Props {
+  title: string;
+  description?: string;
+  date: Date;
+  id: string;
+  category?: string;
+}
+
+const { title, description, date, id, category } = Astro.props;
+---
+
+<article
+  class="group border-b border-darkslate-400 last:border-b-0 py-6 first:pt-0"
+>
+  <a href={`/blog/${id}`} class="block">
+    <!-- Date and category row -->
+    <div class="flex items-center gap-3 mb-2">
+      <time
+        class="text-darkslate-300 text-sm tabular-nums"
+        datetime={date.toISOString()}
+      >
+        {formatDate(date)}
+      </time>
+      {
+        category && (
+          <>
+            <span class="text-darkslate-500">·</span>
+            <span class="text-primary-400 text-sm">{category}</span>
+          </>
+        )
+      }
+    </div>
+
+    <!-- Title -->
+    <h3
+      class="text-xl font-semibold text-neutral-100 group-hover:text-primary-400 transition-colors duration-150 font-[var(--font-cabinet-grotesk)] mb-1"
+    >
+      {title}
+    </h3>
+
+    <!-- Description -->
+    {
+      description && (
+        <p class="text-neutral-400 text-sm leading-relaxed line-clamp-2 mt-1">
+          {description}
+        </p>
+      )
+    }
+
+    <!-- Read more -->
+    <span
+      class="inline-block mt-3 text-sm text-primary-500 group-hover:text-primary-400 transition-colors"
+    >
+      Read more →
+    </span>
+  </a>
+</article>
